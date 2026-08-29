@@ -1,0 +1,174 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: #14161a;
+  color: #e8eaed;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+header h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  color: #9aa0a6;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #1c1f24;
+  border-radius: 10px;
+  border: 1px solid #2a2e35;
+}
+
+.control-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid #3a3f47;
+  background: #262a30;
+  color: #e8eaed;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #2f6feb;
+  border-color: #2f6feb;
+}
+
+.btn-danger {
+  background: #a7302a;
+  border-color: #a7302a;
+}
+
+.select-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #c7cbd1;
+}
+
+.select-label select {
+  background: #262a30;
+  color: #e8eaed;
+  border: 1px solid #3a3f47;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+#video {
+  display: none;
+}
+
+#canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.banner {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  background: rgba(167, 48, 42, 0.92);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.banner.balanced {
+  background: rgba(43, 138, 62, 0.92);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+}
+
+.status-panel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.status-item {
+  background: #1c1f24;
+  border: 1px solid #2a2e35;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-label {
+  font-size: 12px;
+  color: #9aa0a6;
+}
+
+.status-value {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.disclaimer {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #7c8189;
+}
+
+@media (max-width: 640px) {
+  .status-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

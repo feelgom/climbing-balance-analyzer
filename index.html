@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>클라이밍 무게중심 분석기</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>클라이밍 무게중심 분석기</h1>
+    <p class="subtitle">웹캠 또는 영상 파일에서 손·발·몸통을 인식하고, 무게중심이 지지 기반을 벗어나면 알려줍니다.</p>
+  </header>
+
+  <div class="controls">
+    <div class="control-group">
+      <button id="btnWebcam" class="btn btn-primary">웹캠 실시간 분석 시작</button>
+      <label class="btn btn-secondary" for="fileInput">영상 파일 열기</label>
+      <input id="fileInput" type="file" accept="video/*" hidden />
+      <button id="btnStop" class="btn btn-danger" disabled>정지</button>
+    </div>
+    <div class="control-group">
+      <label class="select-label">
+        모델 정확도
+        <select id="modelSelect">
+          <option value="lite">Lite (빠름)</option>
+          <option value="full" selected>Full (균형)</option>
+          <option value="heavy">Heavy (정밀, 느림)</option>
+        </select>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="staticOnlyToggle" checked />
+        정지된 사지만 지지점으로 사용
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="beepToggle" />
+        경고음
+      </label>
+    </div>
+  </div>
+
+  <div class="stage">
+    <video id="video" playsinline muted></video>
+    <canvas id="canvas"></canvas>
+    <div id="banner" class="banner hidden"></div>
+    <div id="loadingOverlay" class="loading-overlay hidden">모델 로딩 중...</div>
+  </div>
+
+  <div class="status-panel">
+    <div class="status-item">
+      <span class="status-label">상태</span>
+      <span id="statusText" class="status-value">대기 중</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">지지 기반</span>
+      <span id="supportModeText" class="status-value">-</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">안정도 / 이탈량</span>
+      <span id="stabilityText" class="status-value">-</span>
+    </div>
+    <div class="status-item">
+      <span class="status-label">FPS</span>
+      <span id="fpsText" class="status-value">-</span>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    ※ 이 도구는 단일 카메라로 촬영한 2D 영상에서 추정한 근사치입니다. 인체 분절 질량비는 Winter/Dempster
+    인체측정학 표를 사용하며, 지지 기반은 손목·발목이 일정 시간 정지해 있는지(=홀드를 잡고 있는지)로
+    추정합니다. 실제 3차원 무게중심, 오버행 각도, 홀드 위치와는 차이가 있을 수 있습니다.
+  </p>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
